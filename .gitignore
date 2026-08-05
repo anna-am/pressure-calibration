@@ -1,0 +1,10 @@
+# Visual Studio
+*.sln
+*.slnx
+*.pyproj
+*.pyproj.user
+.vs/
+
+
+
+.ipynb_checkpoints/
