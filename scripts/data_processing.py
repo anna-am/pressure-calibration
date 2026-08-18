@@ -12,8 +12,8 @@ def inp(file_name):
 
 	df = pd.DataFrame(data[1:], columns=data[0])
 
-	df = df.iloc[:, [1, 2]]
-	df.columns = ['R, OHM', 'P, mV']
+	df = df.iloc[:, [1, 2, 3]]
+	df.columns = ['R, OHM', 'P, mV', 'series']
 	
 	return df
 
@@ -38,7 +38,8 @@ def avg_last(df):
 	return (df.groupby('block_id')
 		.apply(lambda df: pd.Series({
 			'P, mV': df['P, mV'].iloc[0],
-			'R, OHM': df['R, OHM'].tail(25).mean()
+			'R, OHM': df['R, OHM'].tail(25).mean(),
+			'series': df['series'].iloc[0]
 		}))
 		.reset_index(drop=True))
 
